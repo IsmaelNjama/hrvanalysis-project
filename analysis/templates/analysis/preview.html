@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid p-0">
+    <div class="row mb-2 mb-xl-3">
+        <div class="col-auto d-none d-sm-block">
+            <h3>Preview data</h3>
+        </div>
+    </div>
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="alert alert-{{msg.tags}} alert-dismissible fade show" role="alert">
+                {{msg}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+        {% endfor %}
+    {% endif %}
+    <div id="alertMsg"></div>
+    <div>
+        <a class="d-none" id="apiEndPointSubject" href="{% url 'subject-detail' subject.pk %}"></a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-12 order-12 order-md-1">
+            {% if data_preview %}
+            <div id="data-preview" class="table-responsive mb-3">
+                <div class="container">
+                    {{ data_preview|safe }}
+                </div>
+
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-4 col-sm-6 col-12  order-1 order-md-12">
+            <div class="card">
+                <div class="card-header">
+                    Data Specifications
+                </div>
+                <div class="card-body">
+                    <form class="form-inline" id="createSampleForm">
+                        <div class="form-group">
+                            <div class="form-group mb-3">
+                                <label for="sampleComment" class="form-label">Comment</label>
+                                <textarea class="form-control" id="sampleComment" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6 col-12 mb-2"><button class="btn btn-secondary btn-block">Submit</button></div>
+                                <div class="col-lg-6 col-12 mb-2"><a id="sampleListUrl" class="btn btn-primary btn-block"
+                                    href="{% url 'subject_sample_list' subject.pk %}">Discard</a></div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<script>
+    // initialize the scrollbar
+    if (typeof PerfectScrollbar == 'function') {
+        let container = document.querySelector("#data-preview");
+        let ps = new PerfectScrollbar(container);
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+    var nni_data = JSON.parse("{{nni_data|escapejs}}");
+    var subject_api_url = document.getElementById('apiEndPointSubject').href;
+    var sample_list_url = document.getElementById('sampleListUrl').href;
+
+    function displayLoading() {
+        document.querySelector('body').classList.remove("loaded");
+        var elem = document.querySelector('#loader-wrapper .loader-msg');
+        elem.classList.remove("d-none");
+    }
+
+    form = document.getElementById("createSampleForm");
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        let url = "{% url 'sample-list' %}";
+        const comment = document.getElementById('sampleComment').value
+        displayLoading();
+
+        for (let item in nni_data) {
+            fetch(url, {
+                'method': 'POST',
+                'headers': {
+                    'Content-type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify(
+
+                    {
+                        "subject": subject_api_url,
+                        "comment": comment,
+                        "data": nni_data[item]
+                    }
+                )
+            }).then(function (response) {
+                window.location.replace(sample_list_url);
+            }).catch((error) => {
+                console.error('Error:', error);
+                let alert = document.createElement('div');
+                alert.setAttribute('class', 'alert alert-danger alert-dismissible show fade mx-5');
+                alert.setAttribute('role', 'alert');
+                alert.innerHTML = `
+                        Something went wrong
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>        
+                        `
+                document.getElementById('alertMsg').appendChild(alert);
+            });
+
+        }
+
+    })
+    // All the waiting phrases
+    const waitPhraseArray = [
+        "This might take several minutes...",
+        "Ready features...",
+        "Compute results...",
+        "Generate plots...",
+        "Preparing...",
+    ];
+
+    // Initial waitPhrase index
+    let waitPhraseIndex = 0;
+
+    // waitPhrase container
+    const element = document.querySelector('#loader-wrapper .loader-msg');
+
+    // Set first waitPhrase on render
+    element.innerHTML = waitPhraseArray[waitPhraseIndex];
+
+    // The last interval in which something changed, starting from 0 and will be updated by the function
+    let lastIntervalTimestamp = 0;
+
+    // Start of function
+    function render(now) {
+
+        // If the interval is 0
+        // or "right now" minus timestamp is equal or higher than 60 seconds
+        // do the following
+        if (!lastIntervalTimestamp || now - lastIntervalTimestamp >= 60 * 1000) {
+
+            // Update the timestamp to right now
+            lastIntervalTimestamp = now;
+
+            // Update the waitPhrase in the container
+            element.innerHTML = waitPhraseArray[waitPhraseIndex];
+
+            // Progress the waitPhrase index along by 1
+            ++waitPhraseIndex;
+
+            // If the waitPhrase index is at the last of the waitPhrase array flip to 0
+            if (waitPhraseIndex >= waitPhraseArray.length) {
+                waitPhraseIndex = 0;
+            }
+        }
+
+        // Rerun the whole function again when finished, this happens constantly while the animation API runs
+        requestAnimationFrame(render);
+    }
+
+    // Start the function
+    window.requestAnimationFrame(render);
+</script>
+{% endblock content %}
