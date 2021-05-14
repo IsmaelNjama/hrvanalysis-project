@@ -26,4 +26,9 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('daguerre/', include('daguerre.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # dev mode
+]
+
+# dev mode
+from hrvscihub.settings.base import DEBUG
+if DEBUG:
+    urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
