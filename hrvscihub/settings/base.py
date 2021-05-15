@@ -75,7 +75,7 @@ ROOT_URLCONF = 'hrvscihub.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
+        'DIRS': [os.path.join(BASE_DIR, '../templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,9 +135,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-
-
 CORS_ORIGIN_WHITELIST = (
     # ' https://hrvscihub.herokuapp.com'
 )
@@ -155,7 +152,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'subject_list'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
 
 # password reset
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -169,3 +166,5 @@ DEFAULT_FROM_EMAIL = 'HRVSciHub'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAuthenticated',)
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

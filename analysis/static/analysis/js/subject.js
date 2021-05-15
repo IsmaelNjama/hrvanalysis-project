@@ -54,10 +54,10 @@ function subjectList() {
             })(list[i]))
         }
 
-        let addSubjectMsg = document.createElement('h1')
+        let addSubjectMsg = document.createElement('p')
         
         addSubjectMsg.innerText = "Please fill in your study subjects information"
-        addSubjectMsg.setAttribute('class','text-center font-weight-light')
+        addSubjectMsg.setAttribute('class','lead text-center')
             
         if(list.length == 0) {
             container.setAttribute('class','d-flex align-items-center')

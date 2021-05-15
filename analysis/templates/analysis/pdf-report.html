@@ -181,7 +181,7 @@
                         <td>{{ result.parameters.nni_diff_max|floatformat:3|intcomma }}</td>
                     </tr>
                     <tr>
-                        <td>sdnn</td>
+                        <td>SDNN</td>
                         <td>ms</td>
                         <td>{{ result.parameters.sdnn|floatformat:3|intcomma }}</td>
                     </tr>
@@ -228,13 +228,12 @@
                     <tr>
                         <td>{{ custom_threshold.2 }}</td>
                         <td>-</td>
-                        <td>{{ custom_threshold.3|floatformat:3|intcomma }}
-                        </td>
+                        <td>{% if custom_threshold.3 %}{{ custom_threshold.3|floatformat:3|intcomma }}{% else %}-{% endif %}</td>
                     </tr>
                     <tr>
                         <td>{{ custom_threshold.0 }}</td>
                         <td>-</td>
-                        <td>{{ custom_threshold.1|floatformat:3|intcomma}}</td>
+                        <td>{% if custom_threshold.1 %}{{ custom_threshold.1|floatformat:3|intcomma}}{% else %}-{% endif %}</td>
                     </tr>
                     <tr>
                         <td>TRIANGULAR INDEX</td>
