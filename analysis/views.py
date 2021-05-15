@@ -188,14 +188,14 @@ def result_render_pdf(request, pk):
 	return response
 
 
-def error_404(request, exception):
+def error_404(request, *args, **kwargs):
         return render(request,'analysis/404.html')
 
-def error_500(request,  exception):
+def error_500(request, *args, **kwargs):
         return render(request,'analysis/500.html')
         
-def error_403(request, exception):
+def error_403(request, *args, **kwargs):
         return render(request,'analysis/403.html')
 
-def error_400(request,  exception):
+def error_400(request, *args, **kwargs):
         return render(request,'analysis/400.html') 
