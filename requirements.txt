@@ -6,7 +6,7 @@ biosppy==0.6.1
 cycler==0.10.0
 Django==3.2.3
 django-cors-headers==3.7.0
-django-countries==7.0
+django-countries==7.2.1
 django-crispy-forms==1.11.0
 django-daguerre==3.0.0
 django-environ==0.4.5
