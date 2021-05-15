@@ -32,3 +32,8 @@ urlpatterns = [
 from hrvscihub.settings.base import DEBUG
 if DEBUG:
     urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'analysis.views.error_404'
+handler500 = 'analysis.views.error_500'
+handler403 = 'analysis.views.error_403'
+handler400 = 'analysis.views.error_400'
