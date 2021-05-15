@@ -7,7 +7,9 @@ This project implements the most known heart rate variability analysis technique
 After registering the users are able to:
 * Add subjects to they study board
 * Upload HRV marker files(supported by pyhrv) of their subjects and run the analysis
-* Compare and export their subject data.
+* Compare and export their subject data to pdf reports.
+
+[Restful Api with DRF link](https://hrvscihub.herokuapp.com/api)
 ```
 
 ```bash
