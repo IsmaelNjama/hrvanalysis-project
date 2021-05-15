@@ -2,21 +2,29 @@
 
 This project implements the most known heart rate variability analysis techniques (Frequency and Time domains as well as nonlinear parameters ) with Django using the [pyhrv link](https://github.com/PGomes92/pyhrv/blob/master/README.md) tool for background heart rate analysis.
 
+
+
 # Basic usage
 ```bash
 After registering the users are able to:
 * Add subjects to they study board
 * Upload HRV marker files(supported by pyhrv) of their subjects and run the analysis
 * Compare and export their subject data to pdf reports.
+```
+
 
 [Restful Api with DRF link](https://hrvscihub.herokuapp.com/api)
-```
+
+
 
 ```bash
 HRVScihub is a web based application deveopped within the scope of my Bachelor thesis: "Heart Rate
 Variability analysis based on data collected from fitness sensors" at The Ternopil National
 Technical University (TNTU), Ukraine.
 ```
+
+
+
 
 # Disclaimer
 ```bash
