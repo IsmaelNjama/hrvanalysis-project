@@ -28,10 +28,8 @@ urlpatterns = [
     path('daguerre/', include('daguerre.urls')),
 ]
 
-# dev mode
-from hrvscihub.settings.base import DEBUG
-if DEBUG:
-    urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'analysis.views.error_404'
 handler500 = 'analysis.views.error_500'

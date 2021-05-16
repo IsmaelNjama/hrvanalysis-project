@@ -6,6 +6,7 @@ import environ
 
 from hrvscihub.settings.base import *
 
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -16,6 +17,13 @@ DEBUG = env('DEBUG')
 
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
 SECRET_KEY = env('SECRET_KEY')
+
+# Cloudinary stuff
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY':  env('API_KEY'),
+    'API_SECRET':  env('API_SECRET'),
+}
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 

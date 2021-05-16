@@ -1,4 +1,4 @@
-{% load static %} {% load daguerre %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,8 +80,8 @@
                             <a href="#" data-toggle="dropdown"
                                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                                 <div class="avatar mr-1">
-                                    <img src="{% adjust user.profile.image 'fill' width=111 height=110 %}"
-                                        alt="profile image">
+                                    <img style="width: 3em; height: 3em; object-fit: cover;" src="{{ user.profile.image.url }}" alt="Profile">
+
                                 </div>
                                 <div class="d-none d-md-block d-lg-inline-block">Hi, {{ user.username }}</div>
                             </a>

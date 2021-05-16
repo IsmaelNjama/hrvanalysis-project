@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load cloudinary %}
 {% load crispy_forms_tags %}
 {% load static %}
 {% load daguerre %}
@@ -51,8 +52,9 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="text-center">
-                                            <img alt="profile image" src="{% adjust user.profile.image 'fill' width=128 height=128 %}"
-                                                class="rounded-circle img-responsive mt-2" />
+                                                <div class="avatar">
+                                                    <img style="width: 10em; height: 10em; object-fit: cover;" src="{{ user.profile.image.url }}" alt="Profile">
+                                                </div>
                                             <div class="mt-2">
                                                 <span class="btn btn-primary" id=imgUploadBtn><i class="fas fa-upload"></i>
                                                     Upload</span>

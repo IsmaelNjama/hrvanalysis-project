@@ -4,7 +4,7 @@ from django_countries.fields import CountryField
 
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-	image = models.ImageField(default='img/avatars/avatar.png',upload_to='profile_pics')
+	image = models.ImageField(default='profile_pics/avatar.png',upload_to='avatars')
 	first_name = models.CharField(default='', blank=True, max_length=100)
 	last_name = models.CharField(default='', blank=True, max_length=100)
 	city = models.CharField(default='', blank=True, max_length=100)
