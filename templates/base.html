@@ -80,8 +80,11 @@
                             <a href="#" data-toggle="dropdown"
                                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                                 <div class="avatar mr-1">
-                                    <img style="width: 3em; height: 3em; object-fit: cover;" src="{{ user.profile.image.url }}" alt="Profile">
-
+                                    {% if user.profile.image %}
+                                        <img style="width: 3em; height: 3em; object-fit: cover;" src="{{ user.profile.image.url }}" alt="Profile">
+                                    {% else %}
+                                        <img style="width: 3em; height: 3em; object-fit: cover;" src="{% static 'assets/images/avatar.png' %}" alt="Profile">
+                                    {% endif %}
                                 </div>
                                 <div class="d-none d-md-block d-lg-inline-block">Hi, {{ user.username }}</div>
                             </a>
