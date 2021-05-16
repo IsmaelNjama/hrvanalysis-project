@@ -25,7 +25,6 @@ urlpatterns = [
     path('', include('analysis.urls')),
     path('api/', include('api.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    path('daguerre/', include('daguerre.urls')),
 ]
 
 if settings.DEBUG:
