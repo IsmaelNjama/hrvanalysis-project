@@ -5,30 +5,29 @@ This project implements the most known heart rate variability analysis technique
 
 
 # Basic usage
-```bash
+
 After registering the users are able to:
 * Add subjects to they study board
 * Upload HRV marker files(supported by pyhrv) of their subjects and run the analysis
 * Compare and export their subject data to pdf reports.
-```
 
 
 [Restful Api with DRF link](https://hrvscihub.herokuapp.com/api)
 
 
 
-```bash
-HRVScihub is a web based application deveopped within the scope of my Bachelor thesis: "Heart Rate
+
+HRVScihub is a web application developed as part of my Bachelor thesis: "Heart Rate
 Variability analysis based on data collected from fitness sensors" at The Ternopil National
 Technical University (TNTU), Ukraine.
-```
+
 
 
 
 
 # Disclaimer
-```bash
+
+
 This program is distributed in the hope it will be useful and provided to you "as is", but WITHOUT ANY WARRANTY, without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. This program is NOT intended for medical diagnosis. We expressly disclaim any liability whatsoever for any direct, indirect, consequential, incidental or special damages, including, without limitation, lost revenues, lost profits, losses resulting from business interruption or loss of data, regardless of the form of action or legal theory under which the liability may be asserted, even if advised of the possibility of such damages.
-```
 
 
