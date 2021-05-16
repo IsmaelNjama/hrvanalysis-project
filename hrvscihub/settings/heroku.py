@@ -6,14 +6,10 @@ import environ
 
 from hrvscihub.settings.base import *
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
+env = environ.Env()
 
 # False if not in os.environ
-# DEBUG = env('DEBUG')
-DEBUG = True
+DEBUG = False
 
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
 SECRET_KEY = env('SECRET_KEY')
