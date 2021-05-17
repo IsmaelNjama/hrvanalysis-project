@@ -168,7 +168,7 @@ def result_render_pdf(request, pk):
 		ct = result.settings['kwargs_time']['threshold']
 		custom_threshold = (f'pnn{ct}', result.parameters[f'pnn{ct}'],f'nn{ct}', result.parameters[f'nn{ct}'])
 	except:
-		custom_threshold = ("ppxx", "n/a", "nnxx", "n/a")
+		custom_threshold = ("ppxx", "-", "nnxx", "-")
 	context = {'result': result, 'custom_threshold' : custom_threshold}
 	# Create a Django response object, and specify content_type as pdf
 	now=datetime.datetime.now()

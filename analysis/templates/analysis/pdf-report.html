@@ -115,13 +115,13 @@
 
     <section>
         <h4>Time domain results</h4>
-        <div>
+        <div class="mb-3">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">parameter</th>
-                        <th scope="col">value</th>
-                        <th scope="col">unit</th>
+                        <th scope="col">Parameter</th>
+                        <th scope="col">Unit</th>
+                        <th scope="col">Value</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -226,19 +226,30 @@
                         <td>{{ result.parameters.pnn20|floatformat:3|intcomma }}</td>
                     </tr>
                     <tr>
-                        <td>{{ custom_threshold.2 }}</td>
-                        <td>-</td>
-                        <td>{% if custom_threshold.3 %}{{ custom_threshold.3|floatformat:3|intcomma }}{% else %}-{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ custom_threshold.0 }}</td>
-                        <td>-</td>
-                        <td>{% if custom_threshold.1 %}{{ custom_threshold.1|floatformat:3|intcomma}}{% else %}-{% endif %}</td>
-                    </tr>
-                    <tr>
                         <td>TRIANGULAR INDEX</td>
                         <td>-</td>
                         <td>{{ result.parameters.tri_index|floatformat:3|intcomma }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mb-3">
+            <h5>Custom threshold</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">parameter</th>
+                        <th scope="col">value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ custom_threshold.2 }}</td>
+                        <td>{{ custom_threshold.3 }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ custom_threshold.0 }}</td>
+                        <td>{{ custom_threshold.1 }}</td>
                     </tr>
                 </tbody>
             </table>
