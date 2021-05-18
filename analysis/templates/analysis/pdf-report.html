@@ -114,19 +114,13 @@
 
     <section>
         <h4>Time domain results</h4>
-        <div class="mb-3">
+        <div>
             <table class="table">
                 <thead>
                     <tr>
-<<<<<<< HEAD
                         <th scope="col">Parameter</th>
                         <th scope="col">Unit</th>
                         <th scope="col">Value</th>
-=======
-                        <th scope="col">parameter</th>
-                        <th scope="col">unit</th>
-                        <th scope="col">value</th>
->>>>>>> staging
                     </tr>
                 </thead>
                 <tbody>
@@ -231,36 +225,11 @@
                         <td>{{ result.parameters.pnn20 }}</td>
                     </tr>
                     <tr>
-                        <td>TRIANGULAR INDEX</td>
-                        <td>-</td>
-<<<<<<< HEAD
-                        <td>{{ result.parameters.tri_index|floatformat:3|intcomma }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="mb-3">
-            <h5>Custom threshold</h5>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">parameter</th>
-                        <th scope="col">value</th>
-=======
-                        <td>{% if custom_threshold.3 %}{{ custom_threshold.3 }}{% else %}-{% endif %}</td>
->>>>>>> staging
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-<<<<<<< HEAD
                         <td>{{ custom_threshold.2 }}</td>
-                        <td>{{ custom_threshold.3 }}</td>
+                        <td>-</td>
+                        <td>{% if custom_threshold.3 %}{{ custom_threshold.3 }}{% else %}-{% endif %}</td>
                     </tr>
                     <tr>
-                        <td>{{ custom_threshold.0 }}</td>
-                        <td>{{ custom_threshold.1 }}</td>
-=======
                         <td>{{ custom_threshold.0 }}</td>
                         <td>-</td>
                         <td>{% if custom_threshold.1 %}{{ custom_threshold.1}}{% else %}-{% endif %}</td>
@@ -269,7 +238,6 @@
                         <td>TRIANGULAR INDEX</td>
                         <td>-</td>
                         <td>{{ result.parameters.tri_index }}</td>
->>>>>>> staging
                     </tr>
                 </tbody>
             </table>
@@ -286,8 +254,8 @@
             <table class="table">
                 <thead>
                     <tr class="text-uppercase">
-                        <th scope="col">parameter</th>
-                        <th scope="col">unit</th>
+                        <th scope="col">Parameter</th>
+                        <th scope="col">Unit</th>
                         <th scope="col">vlf</th>
                         <th scope="col">lf</th>
                         <th scope="col">hf</th>
@@ -347,8 +315,8 @@
             <table class="table table-bordered text-uppercase">
                 <thead>
                     <tr class="text-uppercase">
-                        <th scope="col">parameter</th>
-                        <th scope="col">unit</th>
+                        <th scope="col">Parameter</th>
+                        <th scope="col">Unit</th>
                         <th scope="col">vlf</th>
                         <th scope="col">lf</th>
                         <th scope="col">hf</th>
@@ -447,9 +415,9 @@
             <table class="table table-bordered text-uppercase">
                 <thead>
                     <tr>
-                        <th scope="col">parameter</th>
-                        <th scope="col">value</th>
-                        <th scope="col">unit</th>
+                        <th scope="col">Parameter</th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Unit</th>
                     </tr>
                 </thead>
                 <tbody>
