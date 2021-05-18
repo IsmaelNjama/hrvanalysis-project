@@ -58,8 +58,8 @@
                             {% csrf_token %}
                             <div class="input-group mb-3" id="signalData">
                                 <div class="custom-file">
-                                    <label class="custom-file-label font-weight-bold" for="inputFileSignal">Choose ecg
-                                        file:</label>
+                                    <label class="custom-file-label font-weight-bold" for="inputFileSignal">Choose ECG
+                                        File:</label>
                                     <input type="file" class="custom-file-input form-control" accept=".txt"
                                         id="inputFileSignal" aria-describedby="ecgFile" name="ecgFile">
 
@@ -68,20 +68,10 @@
 
                             <div class="input-group mb-3" id="nniData">
                                 <div class="custom-file">
-                                    <label class="custom-file-label font-weight-bold" for="inputNNIfile">Choose nn
-                                        interval file:</label>
+                                    <label class="custom-file-label font-weight-bold" for="inputNNIfile">Choose RR
+                                        File:</label>
                                     <input type="file" accept=".csv, .txt" class="custom-file-input form-control"
                                         id="inputNNIfile" aria-describedby="nniFile" name="nniFile" >
-
-                                </div>
-                            </div>
-
-                            <div class="input-group mb-3" id="rpeakData">
-                                <div class="custom-file">
-                                    <label class="custom-file-label font-weight-bold" for="inputRPEAKSfile">Choose r
-                                        peaks file:</label>
-                                    <input type="file" accept=".csv, .txt" class="custom-file-input form-control"
-                                        id="inputRPEAKSfile" aria-describedby="rpeaks" name="rpeaksFile">
 
                                 </div>
                             </div>

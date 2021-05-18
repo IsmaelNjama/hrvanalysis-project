@@ -9,20 +9,12 @@ function uploadFiles() {
     })
     let signalInput = document.getElementById('inputFileSignal');
     let nniInput = document.getElementById('inputNNIfile');
-    let rpeaksInput = document.getElementById('inputRPEAKSfile');
     signalInput.addEventListener('change', () => {
         document.getElementById("nniData").className = 'd-none';
-        document.getElementById("rpeakData").className = 'd-none';
         document.getElementById("submitfilebtn").classList.remove("d-none");
     })
     nniInput.addEventListener('change', () => {
         document.getElementById("signalData").className = 'd-none';
-        document.getElementById("rpeakData").className = 'd-none';
-        document.getElementById("submitfilebtn").classList.remove("d-none");
-    })
-    rpeaksInput.addEventListener('change', () => {
-        document.getElementById("signalData").className = 'd-none';
-        document.getElementById("nniData").className = 'd-none';
         document.getElementById("submitfilebtn").classList.remove("d-none");
     })
 
@@ -82,7 +74,7 @@ const deleteForms = document.getElementsByClassName('deleteSampleForm');
 for (const form of deleteForms) {
     form.addEventListener('submit', e => {
         e.preventDefault();
-        let url = document.URL + form.id
+        let url = form.id
         fetch(url, {
             'method': 'DELETE',
             'headers': {

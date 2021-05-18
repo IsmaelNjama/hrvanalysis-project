@@ -82,19 +82,6 @@ def preview_file(request, pk):
 			except:
 				messages.info(request, f'Something went wrong while trying to read the file(s)')
 				return redirect('subject_sample_list', pk=subject.pk)
-		elif rpeaks_file:
-			try:
-				df = pd.read_csv(rpeaks_file)
-				df.dropna(axis = 1, how ='all', inplace = True)
-				data_preview = df.to_html(classes='table table-striped dataFile')
-				if len(df.columns) != 1:
-					messages.warning(request, f'The file has more than one column only the first will be used')
-				rpeaks = df.iloc[:, 0].dropna().tolist()
-				nni = tools.nn_intervals(rpeaks)
-				nni_data[rpeaks_file.name] = nni.tolist() 
-			except:
-				messages.info(request, f'Something went wrong while trying to read the file(s)')
-				return redirect('subject_sample_list', pk=subject.pk)
 
 	context = {
 		'data_preview' : data_preview,
