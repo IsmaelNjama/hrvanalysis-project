@@ -1,5 +1,4 @@
 {% load static %}
-{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,115 +118,122 @@
             <table class="table">
                 <thead>
                     <tr>
+<<<<<<< HEAD
                         <th scope="col">Parameter</th>
                         <th scope="col">Unit</th>
                         <th scope="col">Value</th>
+=======
+                        <th scope="col">parameter</th>
+                        <th scope="col">unit</th>
+                        <th scope="col">value</th>
+>>>>>>> staging
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>NNI</td>
                         <td>-</td>
-                        <td>{{ result.parameters.nni_counter|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.nni_counter }}</td>
                     </tr>
                     <tr>
                         <td>NNI MEAN</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.nni_mean|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.nni_mean }}</td>
                     </tr>
                     <tr>
                         <td>NNI MIN</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.nni_min|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.nni_min }}</td>
                     </tr>
                     <tr>
                         <td>NNI MAX</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.nni_max|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.nni_max }}</td>
                     </tr>
                     <tr>
                         <td>HR MEAN</td>
                         <td>bpm</td>
-                        <td>{{ result.parameters.hr_mean|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.hr_mean }}</td>
                     </tr>
                     <tr>
                         <td>HR MIN</td>
                         <td>bpm</td>
-                        <td>{{ result.parameters.hr_min|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.hr_min }}</td>
                     </tr>
                     <tr>
                         <td>HR MAX</td>
                         <td>bpm</td>
-                        <td>{{ result.parameters.hr_max|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.hr_max }}</td>
                     </tr>
                     <tr>
                         <td>HR STD</td>
                         <td>bpm</td>
-                        <td>{{ result.parameters.hr_std|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.hr_std }}</td>
                     </tr>
                     <tr>
                         <td>NNI DIFF MEAN</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.nni_diff_mean|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.nni_diff_mean }}</td>
                     </tr>
                     <tr>
                         <td>NNI DIFF MIN</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.nni_diff_min|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.nni_diff_min }}</td>
                     </tr>
                     <tr>
                         <td>NNI DIFF MAX</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.nni_diff_max|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.nni_diff_max }}</td>
                     </tr>
                     <tr>
                         <td>SDNN</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.sdnn|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.sdnn }}</td>
                     </tr>
                     <tr>
                         <td>SDNN INDEX</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.sdnn_index|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.sdnn_index }}</td>
                     </tr>
                     <tr>
                         <td>SDANN</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.sdann|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.sdann }}</td>
                     </tr>
                     <tr>
                         <td>RMSSD</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.rmssd|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.rmssd }}</td>
                     </tr>
                     <tr>
                         <td>SDSD</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.sdsd|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.sdsd }}</td>
                     </tr>
                     <tr>
                         <td>NN50</td>
                         <td>-</td>
-                        <td>{{ result.parameters.nn50|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.nn50 }}</td>
                     </tr>
                     <tr>
                         <td>PNN50</td>
                         <td>-</td>
-                        <td>{{ result.parameters.pnn50|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.pnn50 }}</td>
                     </tr>
                     <tr>
                         <td>NN20</td>
                         <td>-</td>
-                        <td>{{ result.parameters.nn20|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.nn20 }}</td>
                     </tr>
                     <tr>
                         <td>PNN20</td>
                         <td>-</td>
-                        <td>{{ result.parameters.pnn20|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.pnn20 }}</td>
                     </tr>
                     <tr>
                         <td>TRIANGULAR INDEX</td>
                         <td>-</td>
+<<<<<<< HEAD
                         <td>{{ result.parameters.tri_index|floatformat:3|intcomma }}</td>
                     </tr>
                 </tbody>
@@ -240,16 +246,30 @@
                     <tr>
                         <th scope="col">parameter</th>
                         <th scope="col">value</th>
+=======
+                        <td>{% if custom_threshold.3 %}{{ custom_threshold.3 }}{% else %}-{% endif %}</td>
+>>>>>>> staging
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+<<<<<<< HEAD
                         <td>{{ custom_threshold.2 }}</td>
                         <td>{{ custom_threshold.3 }}</td>
                     </tr>
                     <tr>
                         <td>{{ custom_threshold.0 }}</td>
                         <td>{{ custom_threshold.1 }}</td>
+=======
+                        <td>{{ custom_threshold.0 }}</td>
+                        <td>-</td>
+                        <td>{% if custom_threshold.1 %}{{ custom_threshold.1}}{% else %}-{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <td>TRIANGULAR INDEX</td>
+                        <td>-</td>
+                        <td>{{ result.parameters.tri_index }}</td>
+>>>>>>> staging
                     </tr>
                 </tbody>
             </table>
@@ -277,48 +297,48 @@
                     <tr>
                         <th scope="row">Peak Frequencies</th>
                         <td>Hz</td>
-                        <td>{{ result.parameters.fft_peak.0|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.fft_peak.1|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.fft_peak.2|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.fft_peak.0 }}</td>
+                        <td>{{ result.parameters.fft_peak.1 }}</td>
+                        <td>{{ result.parameters.fft_peak.2 }}</td>
                     </tr>
                     <tr>
                         <th scope="row">Absolute Powers</th>
                         <td>ms2</td>
-                        <td>{{ result.parameters.fft_abs.0|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.fft_abs.1|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.fft_abs.2|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.fft_abs.0 }}</td>
+                        <td>{{ result.parameters.fft_abs.1 }}</td>
+                        <td>{{ result.parameters.fft_abs.2 }}</td>
                     </tr>
                     <tr>
                         <th scope="row">Relative Powers</th>
                         <td>%</td>
-                        <td>{{ result.parameters.fft_rel.0|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.fft_rel.1|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.fft_rel.2|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.fft_rel.0 }}</td>
+                        <td>{{ result.parameters.fft_rel.1 }}</td>
+                        <td>{{ result.parameters.fft_rel.2 }}</td>
                     </tr>
                     <tr>
                         <th scope="row">Logarithmic Powers</th>
                         <td>-</td>
-                        <td>{{ result.parameters.fft_log.0|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.fft_log.1|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.fft_log.2|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.fft_log.0 }}</td>
+                        <td>{{ result.parameters.fft_log.1 }}</td>
+                        <td>{{ result.parameters.fft_log.2 }}</td>
                     </tr>
                     <tr>
                         <th scope="row">LF/HF Ratio</th>
-                        <td colspan="4">{{ result.parameters.fft_ratio|floatformat:3|intcomma }}</td>
+                        <td colspan="4">{{ result.parameters.fft_ratio }}</td>
                     </tr>
                     <tr>
                         <th scope="row">Total Power</th>
                         <td>ms2</td>
-                        <td colspan="3">{{ result.parameters.fft_total|floatformat:3|intcomma }}</td>
+                        <td colspan="3">{{ result.parameters.fft_total }}</td>
                     </tr>
                 </tbody>
             </table>
             <p>Configurations: </p>
             <ul>
-                <li>Resampling frequency: {{ result.parameters.fft_resampling_frequency|floatformat:3|intcomma }} Hz</li>
+                <li>Resampling frequency: {{ result.parameters.fft_resampling_frequency }} Hz</li>
                 <li>Interpolation: {{ result.parameters.fft_interpolation }}</li>
                 <li>Window: {{ result.parameters.fft_window }}</li>
-                <li>NFFT (over entire signal): {{ result.parameters.fft_nfft|floatformat:3|intcomma }}</li>
+                <li>NFFT (over entire signal): {{ result.parameters.fft_nfft }}</li>
             </ul>
         </div>
 
@@ -338,46 +358,46 @@
                     <tr>
                         <th scope="row">Peak Frequencies</th>
                         <td>Hz</td>
-                        <td>{{ result.parameters.lomb_peak.0|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.lomb_peak.1|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.lomb_peak.2|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.lomb_peak.0 }}</td>
+                        <td>{{ result.parameters.lomb_peak.1 }}</td>
+                        <td>{{ result.parameters.lomb_peak.2 }}</td>
                     </tr>
                     <tr>
                         <th scope="row">Absolute Powers</th>
                         <td>ms2</td>
-                        <td>{{ result.parameters.lomb_abs.0|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.lomb_abs.1|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.lomb_abs.2|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.lomb_abs.0 }}</td>
+                        <td>{{ result.parameters.lomb_abs.1 }}</td>
+                        <td>{{ result.parameters.lomb_abs.2 }}</td>
                     </tr>
                     <tr>
                         <th scope="row">Relative Powers</th>
                         <td>%</td>
-                        <td>{{ result.parameters.lomb_rel.0|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.lomb_rel.1|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.lomb_rel.2|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.lomb_rel.0 }}</td>
+                        <td>{{ result.parameters.lomb_rel.1 }}</td>
+                        <td>{{ result.parameters.lomb_rel.2 }}</td>
                     </tr>
                     <tr>
                         <th scope="row">Logarithmic Powers</th>
                         <td>-</td>
-                        <td>{{ result.parameters.lomb_log.0|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.lomb_log.1|floatformat:3|intcomma }}</td>
-                        <td>{{ result.parameters.lomb_log.2|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.lomb_log.0 }}</td>
+                        <td>{{ result.parameters.lomb_log.1 }}</td>
+                        <td>{{ result.parameters.lomb_log.2 }}</td>
                     </tr>
                     <tr>
                         <th scope="row">LF/HF Ratio</th>
-                        <td colspan="4">{{ result.parameters.lomb_ratio|floatformat:3|intcomma }}</td>
+                        <td colspan="4">{{ result.parameters.lomb_ratio }}</td>
                     </tr>
                     <tr>
                         <th scope="row">Total Power</th>
                         <td>ms2</td>
-                        <td colspan="3">{{ result.parameters.lomb_total|floatformat:3|intcomma }}</td>
+                        <td colspan="3">{{ result.parameters.lomb_total }}</td>
                     </tr>
                 </tbody>
             </table>
             <p>Configurations: </p>
             <ul>
                 <li>Moving Average Window Size: {{ result.parameters.lomb_ma }} Hz</li>
-                <li>NFFT (over entire signal): {{ result.parameters.lomb_nfft|floatformat:3|intcomma }}</li>
+                <li>NFFT (over entire signal): {{ result.parameters.lomb_nfft }}</li>
             </ul>
         </div>
 
@@ -388,17 +408,17 @@
                     <tr style="background-color: #66B032;">
                         <th scope="row">VLF Band</th>
                         <td>Hz</td>
-                        <td>{{result.parameters.lomb_bands.vlf.0|floatformat:3|intcomma}}-{{result.parameters.lomb_bands.vlf.1|floatformat:3|intcomma}}</td>
+                        <td>{{result.parameters.lomb_bands.vlf.0}}-{{result.parameters.lomb_bands.vlf.1}}</td>
                     </tr>
                     <tr style="background-color: #347B98;">
                         <th scope="row">LF Band</th>
                         <td>Hz</td>
-                        <td>{{result.parameters.lomb_bands.lf.0|floatformat:3|intcomma}}-{{result.parameters.lomb_bands.lf.1|floatformat:3|intcomma}}</td>
+                        <td>{{result.parameters.lomb_bands.lf.0}}-{{result.parameters.lomb_bands.lf.1}}</td>
                     </tr>
                     <tr style="background-color: #092834;">
                         <th scope="row">HF Band</th>
                         <td>Hz</td>
-                        <td>{{result.parameters.lomb_bands.hf.0|floatformat:3|intcomma}}-{{result.parameters.lomb_bands.hf.1|floatformat:3|intcomma}}</td>
+                        <td>{{result.parameters.lomb_bands.hf.0}}-{{result.parameters.lomb_bands.hf.1}}</td>
                     </tr>
 
                 </tbody>
@@ -436,37 +456,37 @@
                     <tr>
                         <td>SD1</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.sd1|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.sd1 }}</td>
                     </tr>
                     <tr>
                         <td>SD2</td>
                         <td>ms</td>
-                        <td>{{ result.parameters.sd2|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.sd2 }}</td>
                     </tr>
                     <tr>
                         <td>SD1/SD2</td>
                         <td>-</td>
-                        <td>{{ result.parameters.sd_ratio|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.sd_ratio }}</td>
                     </tr>
                     <tr>
                         <td>Ellipse Area S</td>
                         <td>-</td>
-                        <td>{{ result.parameters.ellipse_area|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.ellipse_area }}</td>
                     </tr>
                     <tr>
                         <td>Sample Entropy</td>
                         <td>-</td>
-                        <td>{{ result.parameters.sampen|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.sampen }}</td>
                     </tr>
                     <tr>
                         <td>DFA alpha 1</td>
                         <td>-</td>
-                        <td>{{ result.parameters.dfa_alpha1|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.dfa_alpha1 }}</td>
                     </tr>
                     <tr>
                         <td>DFA alpha 2</td>
                         <td>-</td>
-                        <td>{{ result.parameters.dfa_alpha2|floatformat:3|intcomma }}</td>
+                        <td>{{ result.parameters.dfa_alpha2 }}</td>
                     </tr>
                 </tbody>
             </table>
