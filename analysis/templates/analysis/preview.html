@@ -142,55 +142,6 @@
 
     })
     }
-    // All the waiting phrases
-    const waitPhraseArray = [
-        "This might take a while ...",
-        "Ready features...",
-        "Compute results...",
-        "Generate plots...",
-        "Preparing...",
-    ];
 
-    // Initial waitPhrase index
-    let waitPhraseIndex = 0;
-
-    // waitPhrase container
-    const element = document.querySelector('#loader-wrapper .loader-msg');
-
-    // Set first waitPhrase on render
-    element.innerHTML = waitPhraseArray[waitPhraseIndex];
-
-    // The last interval in which something changed, starting from 0 and will be updated by the function
-    let lastIntervalTimestamp = 0;
-
-    // Start of function
-    function render(now) {
-
-        // If the interval is 0
-        // or "right now" minus timestamp is equal or higher than 60 seconds
-        // do the following
-        if (!lastIntervalTimestamp || now - lastIntervalTimestamp >= 60 * 1000) {
-
-            // Update the timestamp to right now
-            lastIntervalTimestamp = now;
-
-            // Update the waitPhrase in the container
-            element.innerHTML = waitPhraseArray[waitPhraseIndex];
-
-            // Progress the waitPhrase index along by 1
-            ++waitPhraseIndex;
-
-            // If the waitPhrase index is at the last of the waitPhrase array flip to 0
-            if (waitPhraseIndex >= waitPhraseArray.length) {
-                waitPhraseIndex = 0;
-            }
-        }
-
-        // Rerun the whole function again when finished, this happens constantly while the animation API runs
-        requestAnimationFrame(render);
-    }
-
-    // Start the function
-    window.requestAnimationFrame(render);
 </script>
 {% endblock content %}

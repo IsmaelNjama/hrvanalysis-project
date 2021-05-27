@@ -11,25 +11,30 @@
                 <p class="text-subtitle text-muted">Sample list</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                <nav aria-label="breadcrumb" class='breadcrumb-header mb-3'>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'subject_list' %}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Samples</li>
                     </ol>
                 </nav>
+                <div class="input-group mb-4">
+                    <span class="input-group-text" id="basic-addon1"><i data-feather="search"></i></span>
+                    <input id="filterSample" type="text" class="form-control" placeholder="Search sample..." aria-label="Search sample"
+                        aria-describedby="button-addon2">
+                </div>
             </div>
         </div>
 
     </div>
     {% if messages %}
-        {% for msg in messages %}
-            <div class="alert alert-{{msg.tags}} alert-dismissible fade show" role="alert">
-                {{msg}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-        {% endfor %}
+    {% for msg in messages %}
+    <div class="alert alert-{{msg.tags}} alert-dismissible fade show" role="alert">
+        {{msg}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
     {% endif %}
     <div id="alertMsg"></div>
     <div class="view-content active" id="sampleView">
@@ -85,20 +90,24 @@
             {% for sample in subject.samples.all %}
             <div class="col-12 col-md-4 col-lg-3 sampleCard">
                 <div class="card border">
+                    {% if sample.result %}
                     <a class="text-decoration-none text-secondary" href="{% url 'analysis_board' sample.pk %}">
                         <div class="card-body text-center file-card">
-                            {% if sample.result %}
+
                             <span>
                                 <img src="{% static 'analysis/img/icons/file-text.svg' %}" alt="file icon">
                             </span>
                             <h2 class="text-secondary m-2">{{ sample.comment }}</h2>
-                            {% else %}
-                            <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
-                                <span class="sr-only">Computing...</span>
-                              </div>
-                            {% endif %}
+
                         </div>
                     </a>
+                    {% else %}
+                    <div class="card-body text-center file-card">
+                        <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="sr-only">Computing...</span>
+                        </div>
+                    </div>
+                    {% endif %}
                     <div class="card-footer border-top">
                         <div class="d-flex justify-content-around align-items-center">
                             <span>{{ sample.last_modified | naturaltime }}</span>

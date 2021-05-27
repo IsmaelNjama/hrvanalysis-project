@@ -1,6 +1,5 @@
 uploadFiles();
 
-
 function uploadFiles() {
     let uploadcard = document.getElementById('uploadFile');
     uploadcard.addEventListener('click', () => {
@@ -88,3 +87,21 @@ for (const form of deleteForms) {
     })
 }
 
+
+// filter samples
+document.getElementById("filterSample").addEventListener('keyup', () => {
+    let input = document.getElementById("filterSample");
+    let filter = input.value.toUpperCase();
+    let wrapper = document.getElementById('sample-wrapper');
+    let cards = wrapper.getElementsByClassName('sampleCard');
+    for (i = 0; i < cards.length; i++) {
+        let h2 = cards[i].getElementsByTagName("h2")[0];
+         
+        let txtValue = h2.textContent || h2.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }    
+})

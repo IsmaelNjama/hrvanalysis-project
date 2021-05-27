@@ -98,11 +98,7 @@ def analysis_board(request, pk):
 	Update result , sample comment and display
 	analysis results 
 	"""
-
-	try:
-		result = Result.objects.get(pk=pk)
-	except Result.DoesNotExist:
-		return redirect('wait_result', pk=pk)
+	result = get_object_or_404(Result, pk=pk)
 	form = ResultSettingsForm()
 	try:
 		# pnnxx and nnxx
@@ -116,20 +112,6 @@ def analysis_board(request, pk):
 		'custom_threshold':custom_threshold,
 	}
 	return render(request, 'analysis/analysis-board.html', context)
-
-
-def wait_result(request, pk):
-	"""
-	Display task bar for result computations
-	"""
-	sample = get_object_or_404(Sample, pk=pk)
-	df = pd.DataFrame(sample.data)
-	data = df.to_html(classes='table table-striped dataFile')
-	context = {
-		'sample':sample,
-		'data': data
-	}
-	return render(request, 'analysis/wait-result.html', context)
 
 
 
