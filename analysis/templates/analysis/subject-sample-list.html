@@ -61,7 +61,7 @@
                                     <label class="custom-file-label font-weight-bold" for="inputFileSignal">Choose ECG
                                         File:</label>
                                     <input type="file" class="custom-file-input form-control" accept=".txt"
-                                        id="inputFileSignal" aria-describedby="ecgFile" name="ecgFile">
+                                        id="inputFileSignal" aria-describedby="ecgFiles" name="ecgFiles" multiple>
 
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                                     <label class="custom-file-label font-weight-bold" for="inputNNIfile">Choose RR
                                         File:</label>
                                     <input type="file" accept=".csv, .txt" class="custom-file-input form-control"
-                                        id="inputNNIfile" aria-describedby="nniFile" name="nniFile" >
+                                        id="inputNNIfile" aria-describedby="nniFiles" name="nniFiles" multiple>
 
                                 </div>
                             </div>
@@ -87,11 +87,16 @@
                 <div class="card border">
                     <a class="text-decoration-none text-secondary" href="{% url 'analysis_board' sample.pk %}">
                         <div class="card-body text-center file-card">
+                            {% if sample.result %}
                             <span>
                                 <img src="{% static 'analysis/img/icons/file-text.svg' %}" alt="file icon">
                             </span>
                             <h2 class="text-secondary m-2">{{ sample.comment }}</h2>
-
+                            {% else %}
+                            <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                                <span class="sr-only">Computing...</span>
+                              </div>
+                            {% endif %}
                         </div>
                     </a>
                     <div class="card-footer border-top">

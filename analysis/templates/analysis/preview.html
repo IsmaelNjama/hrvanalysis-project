@@ -26,12 +26,17 @@
     <div class="row">
         <div class="col-md-8 col-12 order-12 order-md-1">
             {% if data_preview %}
-            <div id="data-preview" class="table-responsive mb-3">
-                <div class="container">
-                    {{ data_preview|safe }}
-                </div>
+                {% for key, val in data_preview.items %}
+                    <div class="container text-center">
+                        <h4>{{key}}</h4>
+                    </div>
+                    <div id="data-preview" class="table-responsive mb-3">
+                        <div class="container">
+                            {{ val|safe }}
+                        </div>
 
-            </div>
+                    </div>
+                {% endfor %}
             {% endif %}
         </div>
         <div class="col-md-4 col-sm-6 col-12  order-1 order-md-12">
@@ -99,49 +104,47 @@
     }
 
     form = document.getElementById("createSampleForm");
-    form.addEventListener('submit', e => {
+    for (let item in nni_data) {
+        form.addEventListener('submit', e => {
         e.preventDefault();
         let url = "{% url 'sample-list' %}";
         const comment = document.getElementById('sampleComment').value
         displayLoading();
+        fetch(url, {
+            'method': 'POST',
+            'headers': {
+                'Content-type': 'application/json',
+                'X-CSRFToken': csrftoken,
+            },
+            body: JSON.stringify(
 
-        for (let item in nni_data) {
-            fetch(url, {
-                'method': 'POST',
-                'headers': {
-                    'Content-type': 'application/json',
-                    'X-CSRFToken': csrftoken,
-                },
-                body: JSON.stringify(
-
-                    {
-                        "subject": subject_api_url,
-                        "comment": comment,
-                        "data": nni_data[item]
-                    }
-                )
-            }).then(function (response) {
-                window.location.replace(sample_list_url);
-            }).catch((error) => {
-                console.error('Error:', error);
-                let alert = document.createElement('div');
-                alert.setAttribute('class', 'alert alert-danger alert-dismissible show fade mx-5');
-                alert.setAttribute('role', 'alert');
-                alert.innerHTML = `
-                        Something went wrong
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>        
-                        `
-                document.getElementById('alertMsg').appendChild(alert);
-            });
-
-        }
+                {
+                    "subject": subject_api_url,
+                    "comment": item + ' ' + comment,
+                    "data": nni_data[item]
+                }
+            )
+        }).then(function (response) {
+            window.location.replace(sample_list_url);
+        }).catch((error) => {
+            console.error('Error:', error);
+            let alert = document.createElement('div');
+            alert.setAttribute('class', 'alert alert-danger alert-dismissible show fade mx-5');
+            alert.setAttribute('role', 'alert');
+            alert.innerHTML = `
+                    Something went wrong
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>        
+                    `
+            document.getElementById('alertMsg').appendChild(alert);
+        });
 
     })
+    }
     // All the waiting phrases
     const waitPhraseArray = [
-        "This might take several minutes...",
+        "This might take a while ...",
         "Ready features...",
         "Compute results...",
         "Generate plots...",

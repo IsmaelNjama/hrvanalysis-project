@@ -7,7 +7,7 @@ This project implements the most known heart rate variability analysis technique
 # Basic usage
 
 After registering the users are able to:
-* Add subjects to they study board
+* Add subjects to their study board
 * Upload HRV marker files(supported by pyhrv) of their subjects and run the analysis
 * Compare and export their subject data to pdf reports.
 

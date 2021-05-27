@@ -1,14 +1,10 @@
 from django.db.models.signals import post_save
+from django.db import transaction
 from django.dispatch import receiver
 from .models import Result, Sample
-
+from .tasks import compute_result
 
 @receiver(post_save, sender=Sample)
-def compute_result(sender, instance, created, **kwargs):
+def create_result(sender, instance, created, **kwargs):
 	if created:
-		Result.objects.create(sample=instance)
-	instance.result.save()
-
-@receiver(post_save, sender=Sample)
-def save_result(sender, instance, created, **kwargs):
-	instance.result.save()
+		transaction.on_commit(lambda: compute_result.delay(instance.pk))

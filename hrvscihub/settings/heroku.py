@@ -27,6 +27,8 @@ CLOUDINARY_STORAGE = {
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
+CELERY_BROKER_URL =  env('REDIS_TLS_URL')
+
 # Parse database connection url strings like psql://user:pass@127.0.0.1:8458/db
 DATABASES = {
     # read os.environ['DATABASE_URL'] and raises ImproperlyConfigured exception if not found
