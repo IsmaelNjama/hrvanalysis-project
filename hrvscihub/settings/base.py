@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'analysis.apps.AnalysisConfig',
     'cloudinary',
     'cloudinary_storage',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [   
@@ -182,3 +183,4 @@ CELERY_BROKER_URL = os.environ.get('REDIS_URL')
 
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_BACKEND = 'django-db'

@@ -29,7 +29,7 @@ class Sample(models.Model):
 	data = models.JSONField(null=True)
 
 	class Meta:
-		ordering = ['last_modified']
+		ordering = ['-last_modified']
 
 	def __str__(self):
 		return f'Sample {self.pk}'
@@ -110,8 +110,9 @@ class Result(models.Model):
 
 					comparison_result = tools.radar_chart(nni=reference_nni, comparison_nni=comparison_nni, parameters=params, show=False)			
 					self.radar_plot = fig_to_html(comparison_result['radar_plot'])
-				except:
-					pass
+				except Exception as e:
+					print(e.__doc__)
+					print(e.message)
 		super(Result, self).save(*args, **kwargs)
 	def __str__(self):
 		return f'Results for sample {self.sample.pk}'
