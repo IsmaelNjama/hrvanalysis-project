@@ -1,16 +1,17 @@
-# [HRVSciHub link](https://hrvscihub.herokuapp.com)
+# [HRVSciHub](https://hrvscihub.herokuapp.com)
 
-This project implements the most known heart rate variability analysis techniques (Frequency and Time domains as well as nonlinear parameters ) with Django using the [pyhrv link](https://github.com/PGomes92/pyhrv/blob/master/README.md) tool for background heart rate analysis.
+This project implements the most known heart rate variability analysis techniques (Frequency and Time domains as well as nonlinear parameters ) with Django using the [pyhrv](https://github.com/PGomes92/pyhrv/blob/master/README.md) tool for background heart rate analysis.
 
 # Basic usage
 
 After registering the users are able to:
 
 - Add subjects to their study board
+
 - Upload HRV marker files(supported by pyhrv) of their subjects and run the analysis
 - Compare and export their subject data to pdf reports.
 
-[Restful Api with DRF link](https://hrvscihub.herokuapp.com/api)
+[Restful Api with DRF](https://hrvscihub.herokuapp.com/api)
 
 # Disclaimer
 
