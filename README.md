@@ -1,6 +1,6 @@
-# [HRVSciHub](https://hrvscihub.herokuapp.com)
+# Description
 
-This project implements the most known heart rate variability analysis techniques (Frequency and Time domains as well as nonlinear parameters ) with Django using the [pyhrv](https://github.com/PGomes92/pyhrv/blob/master/README.md) tool for background heart rate analysis.
+[HRVSciHub](https://hrvscihub.herokuapp.com) implements the most known heart rate variability analysis techniques (Frequency and Time domains as well as nonlinear parameters ) with Django using the [pyhrv](https://github.com/PGomes92/pyhrv/blob/master/README.md) tool for background heart rate analysis.
 
 # Basic usage
 
@@ -32,6 +32,38 @@ Access results:
 - Compare and export their subject data to pdf reports.
 
 [Restful Api with DRF](https://hrvscihub.herokuapp.com/api)
+
+# How to run locally
+### Set Required credentials and values
+
+```bash
+SECRET_KEY=""
+EMAIL_HOST=""
+EMAIL_PORT=""
+EMAIL_HOST_USER=""
+EMAIL_HOST_PASSWORD=""
+CELERY_BROKER_URL=""
+```
+Set these by direclty modifying the `hrvanalysis/hrvscihub/settings/local.py` file.
+
+### Run migrations
+```bash
+python manage.py migrate
+```
+
+### Starting the worker process
+```bash
+celery -A hrvscihub worker --loglevel=info
+```
+
+### Start django local server
+```bash
+python manage.py runserver
+```
+The project is available at http://localhost:8000/
+
+**Note** when activating the account locally: change the activation link from `https` to` http`.
+
 
 # Disclaimer
 
