@@ -28,10 +28,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # False if not in os.environ
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-	'localhost',
+	'localhost','127.0.0.1',
 ]
 
 
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 	'cloudinary',
 	'cloudinary_storage',
 	'django_celery_results',
+  'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [   
@@ -174,8 +175,18 @@ EMAIL_HOST_PASSWORD =  os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'HRVSciHub'
 
 REST_FRAMEWORK = {
-	'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAuthenticated',)
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        
+    ],
 }
+
+# REST_FRAMEWORK = {
+# 	'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAuthenticated',)
+# }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 

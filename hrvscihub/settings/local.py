@@ -10,11 +10,11 @@ from hrvscihub.settings.base import *
 env = environ.Env(
     # set casting, default value
     SECRET_KEY=(str, 'django-insecure-se2z18-w4%9kc(%y-r8*ghu=nrt$_odm@@%wkd69@i&hx*4paz'),
-    EMAIL_HOST=(str, 'your.host.com'),
-    EMAIL_PORT=(str, 'yourPort'),
-    EMAIL_HOST_USER=(str, 'yourHostUser'),
-    EMAIL_HOST_PASSWORD=(str, 'yourPassword'),
-    CELERY_BROKER_URL = (str, 'yourCeleryBrokerUrl'),
+    EMAIL_HOST=(str, 'smtp-relay.sendinblue.com'),
+    EMAIL_PORT=(str, '587'),
+    EMAIL_HOST_USER=(str, 'ifeelhrv@gmail.com'),
+    EMAIL_HOST_PASSWORD=(str, 'CSpWNK4vcbyIBA8G'),
+    CELERY_BROKER_URL = (str, '127.0.0.1'),
 )
 
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ

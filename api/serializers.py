@@ -45,6 +45,7 @@ class ResultSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class SampleSerializer(serializers.HyperlinkedModelSerializer):
+	subject = SubjectSerializer(read_only=True)
 	data = serializers.ListField(child=serializers.FloatField())
 	
 	class Meta:
