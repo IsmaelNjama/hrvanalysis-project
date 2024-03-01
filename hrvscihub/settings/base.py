@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # False if not in os.environ
 DEBUG = False
 ALLOWED_HOSTS = [
-	'localhost','127.0.0.1','54.90.176.94',
+	'localhost','127.0.0.1','54.235.39.240',
 ]
 
 
