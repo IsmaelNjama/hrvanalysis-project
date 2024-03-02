@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # False if not in os.environ
 DEBUG = False
 ALLOWED_HOSTS = [
-	'localhost','127.0.0.1','35.172.221.76',
+	'localhost','127.0.0.1','3.82.57.96',
 ]
 
 
@@ -133,10 +133,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 CORS_ORIGIN_WHITELIST = [
 	'https://hrvscihub.herokuapp.com',
-	'https://res.cloudinary.com'
+	'https://res.cloudinary.com',
+   'http://127.0.0.1:3000'
 ]
 
 # Static files (CSS, JavaScript, Images)
@@ -189,7 +193,12 @@ REST_FRAMEWORK = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-CELERY_BROKER_URL = os.environ.get('REDIS_URL')
+# CELERY_BROKER_URL = os.environ.get('REDIS_URL')
+RABBITMQ_USER = 'guest'
+RABBITMQ_PASSWORD = 'guest'
+RABBITMQ_PUBLIC_IP = '3.82.57.96'
+
+CELERY_BROKER_URL = f'amqp://{RABBITMQ_USER}:{RABBITMQ_PASSWORD}@{RABBITMQ_PUBLIC_IP}:5672//'
 
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
