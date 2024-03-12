@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+
+  web:
+    build:
+      context: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./web:/web
+
+  celery:
+    restart: always
+    build:
+      context: .
+    command: celery -A hrvscihub worker --loglevel=info
+    volumes:
+      - ./web:/web
+    container_name: celery
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379
+      - CELERY_RESULT_BACKEND=redis://redis:6379/
