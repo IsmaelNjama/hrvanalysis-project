@@ -12,17 +12,13 @@ services:
       sh -c "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
-    volumes:
-      - ./web:/web
 
   celery:
     restart: always
     build:
       context: .
     command: celery -A hrvscihub worker --loglevel=info
-    volumes:
-      - ./web:/web
     container_name: celery
     environment:
       - CELERY_BROKER_URL=redis://redis:6379
-      - CELERY_RESULT_BACKEND=redis://redis:6379/
+      - CELERY_RESULT_BACKEND=redis://redis:6379
