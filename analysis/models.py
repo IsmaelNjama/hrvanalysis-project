@@ -113,7 +113,7 @@ class Result(models.Model):
 				except Exception as e:
 					print(e.__doc__)
 					print(e.message)
-		self.parameters=None			
+		# self.parameters=None			
 		super(Result, self).save(*args, **kwargs)
 	def __str__(self):
 		return f'Results for sample {self.sample.pk}'

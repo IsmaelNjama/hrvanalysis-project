@@ -1,9 +1,20 @@
 version: '3'
 
 services:
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: django12345
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
   redis:
     image: redis:alpine
-    container_name: redis
+    volumes:
+      - redis_data:/data
 
   web:
     build:
@@ -12,13 +23,27 @@ services:
       sh -c "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      DATABASE_URL: postgres://postgres:django12345@db:5432/postgres
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: django-db
 
   celery:
     restart: always
     build:
       context: .
     command: celery -A hrvscihub worker --loglevel=info
-    container_name: celery
+    depends_on:
+      - db
+      - redis
     environment:
-      - CELERY_BROKER_URL=redis://redis:6379
-      - CELERY_RESULT_BACKEND=redis://redis:6379
+      DATABASE_URL: postgres://postgres:django12345@db:5432/postgres
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+
+volumes:
+  postgres_data:
+  redis_data:

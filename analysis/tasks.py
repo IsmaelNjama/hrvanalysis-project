@@ -10,7 +10,7 @@ from celery.exceptions import SoftTimeLimitExceeded
 
 @shared_task(bind=True)
 def compute_result(self, sample_pk):
-	sample = Sample.objects.get(pk=sample_pk)
+	sample, created = Sample.objects.get_or_create(pk=sample_pk)
 	
 	try:		
 		result = Result(sample=sample)
